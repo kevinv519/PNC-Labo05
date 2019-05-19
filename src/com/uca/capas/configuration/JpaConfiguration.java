@@ -43,7 +43,7 @@ public class JpaConfiguration {
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/school");
+		dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/school?useUnicode=yes&characterEncoding=UTF-8");
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("");
 		return dataSource;
@@ -52,8 +52,8 @@ public class JpaConfiguration {
 	Properties hibernateProperties() {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.show_sql", "true");
-		properties.setProperty("hibernate.dialect",
-		"org.hibernate.dialect.PostgreSQLDialect");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+		properties.setProperty("spring.datasource.sql-script-encoding", "UTF-8");
 		return properties;
 	}
 }
